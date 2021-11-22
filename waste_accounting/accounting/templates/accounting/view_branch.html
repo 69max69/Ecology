@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}
+{{title}}
+{% endblock %}
+
+
+{% block content %}
+
+<h1>{{title}}</h1>
+
+<table class="table table-bordered">
+    <thead class="thead-light">
+    <tr>
+
+        <th scope="col"> № п/п</th>
+        <th scope="col"> Наименование филиала</th>
+        <th scope="col"> Адрес</th>
+
+
+
+
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for i in branch %}
+    <tr>
+
+
+        <td>{{i.id}}</td>
+        <td>{{i.name}}</td>
+        <td>{{i.adress}}</td>
+
+
+    </tr>
+    {% endfor %}
+    </tbody>
+
+
+</table>
+
+{% endblock %}

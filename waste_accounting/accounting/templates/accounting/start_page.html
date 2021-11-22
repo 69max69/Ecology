@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}
+{{title}}
+{% endblock %}
+
+
+{% block content %}
+
+<h1>{{title}}</h1>
+
+<table class="table table-bordered">
+    <thead class="thead-light">
+    <tr>
+
+        <th scope="col"> № п/п</th>
+        <th scope="col"> Наименование вида отхода</th>
+        <th scope="col"> Код по ФККО</th>
+        <th scope="col"> Класс опасности вида отхода</th>
+        <th scope="col"> Происхождение или условия образования вида отхода</th>
+        <th scope="col"> Агрегатное состояние и физическая форма вида отхода</th>
+        <th scope="col"> Химический и (или) компонентный состав вида отхода, %</th>
+
+
+
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for i in waste %}
+    <tr>
+
+
+        <td>{{i.number}}</td>
+        <td>{{i.name}}</td>
+        <td>{{i.code_fkko}}</td>
+        <td>{{i.danger_class}}</td>
+        <td>{{i.origin}}</td>
+        <td>{{i.condition}}</td>
+        <td>{{i.structure}}</td>
+
+    </tr>
+    {% endfor %}
+    </tbody>
+
+
+</table>
+
+{% endblock %}

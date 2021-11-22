@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block title %}
+{{title}}
+{% endblock %}
+
+
+{% block content %}
+
+<h1>Журнал движения отходов</h1>
+
+<form action="{% url 'sort_waste_motion' %}" method="post"> {% csrf_token %}
+
+
+
+
+<select class="form-select" aria-label="Default select example" id="id_obj" name="name_object" >
+  <option selected> Сортировка по объекту </option>
+    {% for i in objects %}
+      <option  value="{{i.pk}}"> {{i.name}}  </option>
+    {% endfor %}
+
+</select>
+
+<select class="form-select" aria-label="Default select example" id="id_waste" name="name_waste" >
+  <option selected> Сортировка по наменованию отходов </option>
+    {% for i in wastes %}
+      <option  value="{{i.pk}}"> {{i.name}}  </option>
+    {% endfor %}
+
+</select>
+
+
+
+<button type="submit" class="btn btn-success btn-add">Сортировать</button>
+
+ <a href="/view_waste_motion" class="btn btn-outline-primary"  role="button" >Сбросить фильтры</a>
+
+</form>
+<table class="table table-bordered">
+    <thead class="thead-light">
+    <tr>
+
+
+        <th scope="col"> Тип движения</th>
+        <th scope="col"> Наименование вида отхода</th>
+        <th scope="col"> Объект</th>
+        <th scope="col"> Количество, тн</th>
+        <th scope="col"> Дата </th>
+        <th scope="col"> Удаление </th>
+
+
+
+    </tr>
+    </thead>
+
+    <tbody>
+
+    {% for i in motion %}
+    <tr>
+
+
+
+        <td>{{ i.0 }}</td>
+        <td>{{ i.1 }}</td>
+        <td>{{ i.2 }}</td>
+        <td>{{ i.3 }}</td>
+        <td>{{ i.4 }}</td>
+        <td><p><a href="/remove_motion/{{i.5}}_{{ i.0 }}/"  > Удалить </a></td>
+
+
+    </tr>
+
+    {% endfor %}
+    </tbody>
+
+
+</table>
+
+{% endblock %}

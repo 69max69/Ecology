@@ -1,0 +1,103 @@
+<div class="navbar-top">
+
+    <ul class="nav justify-content-end">
+        <li>
+          <span class="navbar-text">
+          {% if request.user.is_authenticated %}
+            Добро пожаловать, {{ user.username }}! | <a href="/user_logout">Выход</a>
+          {% else %}
+          <a href="/register">Регистрация</a> |  <a href="/user_login">Вход</a>
+          {% endif %}
+
+        </span>
+        </li>
+
+    </ul>
+
+</div>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <ul>
+        <li class="navbar-brand">
+            <img src="/media/img/logo.jpeg" width="50" height="50" class="d-inline-block align-top" alt="" loading="lazy">
+            <span class="navbar-brand mb-0 h1"> Учет отходов  АО "Сетевая компания" </span>
+        </li>
+    </ul>
+    <ul>
+        <ul class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                       aria-haspopup="true"
+                       aria-expanded="false">Перечни...</a>
+                    <div class="dropdown-menu">
+
+                        <a class="dropdown-item" href="/">Перечень видов отходов</a>
+                        <a class="dropdown-item" href="/view_objects">Перечень объектов</a>
+                        <a class="dropdown-item" href="/view_branch">Перечень филиалов</a>
+                        <a class="dropdown-item" href="/view_waste_motion">Движение отходов</a>
+
+                    </div>
+
+
+
+                </li>
+{% if request.user.is_authenticated %}
+                {% comment %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                       aria-haspopup="true"
+                       aria-expanded="false">Добавить...</a>
+                    <div class="dropdown-menu">
+
+                        <a class="dropdown-item" href="/">Добавить объект</a>
+                        <a class="dropdown-item" href="/">Добавить отход</a>
+                        <a class="dropdown-item" href="/">Добавить филиал</a>
+
+                    </div>
+
+                </li>
+                {% endcomment %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                       aria-haspopup="true"
+                       aria-expanded="false">Движение отходов</a>
+                    <div class="dropdown-menu">
+
+                        <a class="dropdown-item" href="/add_educated_waste">Образование</a>
+                        <a class="dropdown-item" href="/add_reclaimed_waste">Утилизировать</a>
+                        <a class="dropdown-item" href="/add_transferred_waste">Передать</a>
+
+                    </div>
+
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                       aria-haspopup="true"
+                       aria-expanded="false">Отчеты</a>
+                    <div class="dropdown-menu">
+
+                        <a class="dropdown-item" href="/create_report">Создать отчет</a>
+                        <a class="dropdown-item" href="/reports">Мои отчеты</a>
+
+
+                    </div>
+
+                </li>
+{% endif %}
+            </ul>
+
+
+
+
+
+
+
+        </ul>
+
+    </ul>
+
+
+</nav>

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}
+    Добавление : {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+<h1> Передача отходов </h1>
+<form action="{% url 'add_transferred_waste1' %}" method="post">
+    {% csrf_token %}
+
+{{ form.as_p }}
+
+ <button type="submit" class="btn btn-primary btn-block"> Добавить </button>
+
+</form>
+
+
+{% endblock %}
+
